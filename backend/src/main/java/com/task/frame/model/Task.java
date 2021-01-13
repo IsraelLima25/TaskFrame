@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.task.frame.dto.TaskDTO;
 import com.task.frame.enun.StateTask;
 
 @Entity
@@ -38,12 +39,20 @@ public class Task implements Serializable {
 	}
 
 	public Task(Long id, String title, String description, LocalDate deliveryDate, StateTask state) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.deliveryDate = deliveryDate;
 		this.state = state;
+	}
+	
+	public Task(TaskDTO obj) {
+		
+		id= obj.getId();
+		title = obj.getTitle();
+		description = obj.getDescription();
+		deliveryDate = obj.getDeliveryDate();
+		state = obj.getState();
 	}
 
 	public Long getId() {

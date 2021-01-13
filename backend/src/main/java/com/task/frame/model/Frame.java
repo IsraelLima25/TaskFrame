@@ -3,14 +3,18 @@ package com.task.frame.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.task.frame.dto.FrameDTO;
 
 @Entity
 @Table(name = "tb_frame")
@@ -22,20 +26,27 @@ public class Frame implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy = "escolaEstudante", cascade = CascadeType.REMOVE)
-	private List<Task> tasks = new ArrayList<>();
-	
 	private String description;
 	private String project;
+	
+	@OneToMany(mappedBy = "escolaEstudante", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	private List<Task> tasks = new ArrayList<>();
 
 	public Frame() {
 	}
 
 	public Frame(Long id, String description, String project) {
-		super();
 		this.id = id;
 		this.description = description;
 		this.project = project;
+	}
+	
+	public Frame(FrameDTO obj) {
+		id = obj.getId();
+		description = obj.getDescription();
+		project = obj.getProject();
+		
+		obj.getTasks().stream().map(taskDTO -> tasks.add(new Task(taskDTO))).collect(Collectors.toList());
 	}
 
 	public Long getId() {
