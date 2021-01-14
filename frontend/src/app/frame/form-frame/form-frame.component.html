@@ -3,20 +3,28 @@
   <hr/>
   <div class="row">
       <div class="col-md-6">
+        <form [formGroup] = "frameForm" (submit)="addFrame()">        
+          <div class="form-group">
+            <label class="lbl" for="description">Descrição</label>
+            <input formControlName="description" id="description" class="form-control" type="text">
+            <small class="text-danger d-block mt-2" 
+              *ngIf="frameForm.get('description').errors?.required" class="text-danger d-block mt-2">
+              Descrição obrigatória
+              </small>           
+          </div>
         
-        <div class="form-group">
-          <label class="lbl" for="description">Descrição</label>
-          <input id="description" class="form-control" type="text"> 
-        </div>
-      
-        <div class="form-group">
-          <label class="lbl" for="project">Projeto</label>
-          <input id="project" class="form-control" type="text">
-        </div>
-      
-        <div class="form-group">
-          <a href="#" class="btn-form">Adicionar Tarefa</a>
-        </div>
+          <div class="form-group">
+            <label class="lbl" for="project">Projeto</label>
+            <input formControlName="project" id="project" class="form-control" type="text">
+            <small *ngIf="frameForm.get('project').errors?.required" class="text-danger d-block mt-2">
+              Projeto obrigatório
+            </small>
+          </div>
+        
+          <div class="form-group">
+            <button type="submit" [disabled]="frameForm.invalid" class="btn btn-form">Adicionar</button>
+          </div>
+        </form>
       </div>
   </div>  
 </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FrameService } from 'src/app/services/Frame.service';
+import { Frame } from 'src/models/Frame.model';
 
 @Component({
   selector: 'app-form-frame',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormFrameComponent implements OnInit {
 
-  constructor() { }
+  frameForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder, private frameService: FrameService) { }
+
+  ngOnInit(): void {
+    this.frameForm = this.formBuilder.group({
+      description: ['', Validators.required],
+      project: ['', Validators.required]
+    });
+  }
+
+  public addFrame() {
+    let frame: Frame = new Frame();
+    frame.description = this.frameForm.get('description').value;
+    frame.project = this.frameForm.get('project').value;
+
+    this.frameService.addFrame(frame).subscribe(
+      frame => console.log(frame),
+      err => console.log(err)
+    )
+     
   }
 
 }
