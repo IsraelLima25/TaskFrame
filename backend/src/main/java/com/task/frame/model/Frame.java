@@ -77,6 +77,10 @@ public class Frame implements Serializable {
 		return tasks;
 	}
 	
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
 	public int getTotalTask() {
 		return tasks.size();
 	}

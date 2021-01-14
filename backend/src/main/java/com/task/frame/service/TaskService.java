@@ -39,7 +39,7 @@ public class TaskService {
 		Task task = new Task(taskDTO);
 		task.setFrame(findFrame);
 		
-		Task saveTask = taskRepository.save(new Task(taskDTO));
+		Task saveTask = taskRepository.save(task);
 		
 		findFrame.getTasks().add(saveTask);
 		

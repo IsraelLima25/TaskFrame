@@ -38,5 +38,7 @@ public class FilterTaskDTO implements Serializable {
 	public void setFrom(LocalDate from) {
 		this.from = from;
 	}
+	
+
 
 }

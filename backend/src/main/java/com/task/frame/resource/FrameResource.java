@@ -19,6 +19,8 @@ import com.task.frame.dto.FrameDTO;
 import com.task.frame.model.Frame;
 import com.task.frame.service.FrameService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/frames")
 public class FrameResource {
@@ -26,6 +28,7 @@ public class FrameResource {
 	@Autowired
 	private FrameService serviceFrame;
 	
+	@ApiOperation("Criar quadro de tarefas")
 	@PostMapping
 	public ResponseEntity<FrameDTO> createFrame(@Valid @RequestBody FrameDTO frame){
 		
@@ -37,6 +40,7 @@ public class FrameResource {
 		return ResponseEntity.created(uri).body(frameSave);
 	}
 	
+	@ApiOperation("Listar quadros de tarefas")
 	@GetMapping
 	public ResponseEntity<List<FrameDTO>> listFrames(){
 		
@@ -44,6 +48,7 @@ public class FrameResource {
 		return ResponseEntity.ok(listFrame);
 	}
 	
+	@ApiOperation("Buscar quadro de tarefas por id")
 	@GetMapping(value = "/{idFrame}")
 	public ResponseEntity<FrameDTO> findFrameById(@PathVariable Long idFrame){
 		

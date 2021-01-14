@@ -9,19 +9,25 @@ import javax.validation.constraints.NotNull;
 import com.task.frame.enun.StateTask;
 import com.task.frame.model.Task;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class TaskDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(hidden = true)
 	private Long id;
 	
 	@NotEmpty
 	private String title;
+	
 	@NotEmpty
 	private String description;
+	
 	@NotNull
 	private LocalDate deliveryDate;
 	
+	@ApiModelProperty(hidden = true)
 	private StateTask state;
 	
 	public TaskDTO() {

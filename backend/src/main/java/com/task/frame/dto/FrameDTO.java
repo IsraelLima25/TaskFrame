@@ -9,10 +9,13 @@ import javax.validation.constraints.NotBlank;
 
 import com.task.frame.model.Frame;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class FrameDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(hidden = true)
 	private Long id;
 	
 	@NotBlank
@@ -21,6 +24,7 @@ public class FrameDTO implements Serializable {
 	@NotBlank
 	private String project;
 
+	@ApiModelProperty(hidden = true)
 	private List<TaskDTO> tasks = new ArrayList<>();
 	
 	public FrameDTO() {

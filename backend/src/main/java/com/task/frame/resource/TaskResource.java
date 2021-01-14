@@ -22,55 +22,57 @@ import com.task.frame.dto.FilterTaskDTO;
 import com.task.frame.dto.TaskDTO;
 import com.task.frame.service.TaskService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/tasks")
 public class TaskResource {
-	
+
 	@Autowired
 	private TaskService taskService;
-	
-	@PostMapping
-	@RequestMapping(value = "/add/frame/{idFrame}")
-	public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody TaskDTO taskDTO,
-			@PathVariable Long idFrame) {
-		
+
+	@ApiOperation("Criar e adicionar uma tarefa a um quadro")
+	@PostMapping(value = "/add/frame/{idFrame}")	
+	public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody TaskDTO taskDTO, @PathVariable Long idFrame) {
+
 		TaskDTO taskSave = taskService.createTask(idFrame, taskDTO);
-		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-		.buildAndExpand(taskDTO.getId()).toUri();
-		
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(taskDTO.getId())
+				.toUri();
+
 		return ResponseEntity.created(uri).body(taskSave);
 	}
-	
-	@PutMapping
-	@RequestMapping(value = "/alter/task/{idTask}")
-	public ResponseEntity<TaskDTO> alterStateTask(@PathVariable Long idTask){
-		
+
+	@ApiOperation("Alterar o estado de uma tarefa")
+	@PutMapping(value = "/alter/task/{idTask}")
+	public ResponseEntity<TaskDTO> alterStateTask(@PathVariable Long idTask) {
+
 		TaskDTO alterTask = taskService.alterStateTask(idTask);
 		return ResponseEntity.ok(alterTask);
 	}
-	
-	@DeleteMapping
-	@RequestMapping(value = "/{idTask}")
-	public ResponseEntity<Void> removeTask(@PathVariable Long idTask){
-		
+
+	@ApiOperation("Apagar uma tarefa do quadro")
+	@DeleteMapping(value = "/{idTask}")
+	public ResponseEntity<Void> removeTask(@PathVariable Long idTask) {
+
 		taskService.removeTask(idTask);
 		return ResponseEntity.noContent().build();
 	}
-	
-	@PostMapping
-	@RequestMapping(value = "/filterDate")
-	public ResponseEntity<List<TaskDTO>> filterTaskByDate(@Valid @RequestBody FilterTaskDTO filter){
+
+	@ApiOperation("Filtrar uma tarefa por data")
+	@PostMapping(value = "/filterDate")
+	public ResponseEntity<List<TaskDTO>> filterTaskByDate(@Valid @RequestBody FilterTaskDTO filter) {
+		
 		List<TaskDTO> tasksFilter = taskService.filterTaskByDate(filter);
 		return ResponseEntity.ok(tasksFilter);
 	}
-	
-	@GetMapping
-	@RequestMapping(value = "/now")
-	public ResponseEntity<List<TaskDTO>> listTaskByDayActual(){
-		List<TaskDTO> tasksNow = taskService.listTaskByDayActual(LocalDate.now());
+
+	@ApiOperation("Listar as tarefas do dia atual")
+	@GetMapping(value = "/now")
+	public ResponseEntity<List<TaskDTO>> listTaskByDayActual() {
 		
+		List<TaskDTO> tasksNow = taskService.listTaskByDayActual(LocalDate.now());
 		return ResponseEntity.ok(tasksNow);
 	}
-	
+
 }
