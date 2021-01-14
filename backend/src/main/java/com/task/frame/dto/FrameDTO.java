@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotBlank;
+
 import com.task.frame.model.Frame;
 
 public class FrameDTO implements Serializable {
@@ -12,7 +14,11 @@ public class FrameDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotBlank
 	private String description;
+	
+	@NotBlank
 	private String project;
 
 	private List<TaskDTO> tasks = new ArrayList<>();

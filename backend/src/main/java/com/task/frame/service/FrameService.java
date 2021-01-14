@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.task.frame.dto.FrameDTO;
+import com.task.frame.exception.ResourceNotFoundException;
 import com.task.frame.model.Frame;
 import com.task.frame.repository.FrameRepository;
 
@@ -38,7 +39,6 @@ public class FrameService {
 			return new FrameDTO(frame);
 		}
 		
-		//TODO: Validar
-		throw new RuntimeException();
+		throw new ResourceNotFoundException();
 	}
 }

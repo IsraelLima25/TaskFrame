@@ -3,6 +3,8 @@ package com.task.frame.resource;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,15 +25,8 @@ public class FrameResource {
 	@Autowired
 	private FrameService serviceFrame;
 	
-	@GetMapping
-	public ResponseEntity<List<FrameDTO>> listFrames(){
-		
-		List<FrameDTO> listFrame = serviceFrame.listFrame();
-		return ResponseEntity.ok(listFrame);
-	}
-	
 	@PostMapping
-	public ResponseEntity<FrameDTO> createFrame(@RequestBody FrameDTO frame){
+	public ResponseEntity<FrameDTO> createFrame(@Valid @RequestBody FrameDTO frame){
 		
 		FrameDTO frameSave = serviceFrame.createFrame(frame);
 		
@@ -39,6 +34,13 @@ public class FrameResource {
 		.buildAndExpand(frameSave.getId()).toUri();
 		
 		return ResponseEntity.created(uri).body(frameSave);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<FrameDTO>> listFrames(){
+		
+		List<FrameDTO> listFrame = serviceFrame.listFrame();
+		return ResponseEntity.ok(listFrame);
 	}
 	
 	@GetMapping(value = "/{idFrame}")
