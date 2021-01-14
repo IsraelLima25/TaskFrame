@@ -3,6 +3,9 @@ package com.task.frame.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.task.frame.enun.StateTask;
 import com.task.frame.model.Task;
 
@@ -11,12 +14,16 @@ public class TaskDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-
+	
+	@NotEmpty
 	private String title;
+	@NotEmpty
 	private String description;
+	@NotNull
 	private LocalDate deliveryDate;
+	
 	private StateTask state;
-
+	
 	public TaskDTO() {
 	}
 

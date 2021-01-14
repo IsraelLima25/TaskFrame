@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.task.frame.dto.FrameDTO;
+import com.task.frame.model.Frame;
 import com.task.frame.service.FrameService;
 
 @RestController
@@ -46,8 +47,7 @@ public class FrameResource {
 	@GetMapping(value = "/{idFrame}")
 	public ResponseEntity<FrameDTO> findFrameById(@PathVariable Long idFrame){
 		
-		FrameDTO frameFind = serviceFrame.findFrameById(idFrame);
-		
-		return ResponseEntity.ok(frameFind);
+		Frame frameFind = serviceFrame.findFrameById(idFrame);
+		return ResponseEntity.ok(new FrameDTO(frameFind));
 	}
 }

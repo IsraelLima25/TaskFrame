@@ -30,15 +30,16 @@ public class FrameService {
 		return new FrameDTO(frameSave);
 	}
 
-	public FrameDTO findFrameById(Long idFrame) {
+	public Frame findFrameById(Long idFrame) {
 		
 		Optional<Frame> optionalFrame = frameRepository.findById(idFrame);
 		
 		if(optionalFrame.isPresent()) {
 			Frame frame = optionalFrame.get();
-			return new FrameDTO(frame);
+			return frame;
 		}
 		
 		throw new ResourceNotFoundException();
-	}
+	}	
+	
 }

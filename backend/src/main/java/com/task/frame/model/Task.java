@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,12 +30,14 @@ public class Task implements Serializable {
 	private String title;
 	private String description;
 	private LocalDate deliveryDate;
+
+	@Enumerated(EnumType.STRING)
 	private StateTask state;
 
 	@ManyToOne
 	@JoinColumn(name = "frame_id")
 	@JsonBackReference
-	private Frame escolaEstudante;
+	private Frame frame;
 
 	public Task() {
 	}
@@ -45,10 +49,10 @@ public class Task implements Serializable {
 		this.deliveryDate = deliveryDate;
 		this.state = state;
 	}
-	
+
 	public Task(TaskDTO obj) {
-		
-		id= obj.getId();
+
+		id = obj.getId();
 		title = obj.getTitle();
 		description = obj.getDescription();
 		deliveryDate = obj.getDeliveryDate();
@@ -95,12 +99,12 @@ public class Task implements Serializable {
 		this.state = state;
 	}
 
-	public Frame getEscolaEstudante() {
-		return escolaEstudante;
+	public Frame getFrame() {
+		return frame;
 	}
 
-	public void setEscolaEstudante(Frame escolaEstudante) {
-		this.escolaEstudante = escolaEstudante;
+	public void setFrame(Frame frame) {
+		this.frame = frame;
 	}
 
 	@Override

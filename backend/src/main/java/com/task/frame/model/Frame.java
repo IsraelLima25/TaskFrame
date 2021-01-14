@@ -29,7 +29,7 @@ public class Frame implements Serializable {
 	private String description;
 	private String project;
 	
-	@OneToMany(mappedBy = "escolaEstudante", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "frame", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private List<Task> tasks = new ArrayList<>();
 
 	public Frame() {
