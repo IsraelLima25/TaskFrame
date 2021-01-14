@@ -1,0 +1,19 @@
+.main-footer {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #3349FF;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;    
+    color: #FFF;
+    position: fixed;
+    bottom:0;
+    width:100%; 
+    margin-top: 50px;   
+}
+
+.footer-title{
+    font-size: 20px;
+    transform: translateY(50%); 
+}
