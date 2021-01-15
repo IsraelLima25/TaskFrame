@@ -1,7 +1,7 @@
   <div class="col-md-3">
     <div class=" text-center mt-4" style="width: 12rem;">
       <div class="card-container">        
-        <a class="subtitle-text mb-2 title-card">{{frame.description}}</a>
+        <a (click)="detailFrame(frame.id)" class="subtitle-text mb-2 title-card">{{frame.description}}</a>
         <h6 class="subtitle-text mb-2 text-muted">{{frame.project}}</h6>
         <p class="subtitle-text">Total de tarefas: {{frame.totalTasks}}</p>
         <a (click)="addTask(frame.id)" class="card-link btn-card">Adicionar Tarefa</a>

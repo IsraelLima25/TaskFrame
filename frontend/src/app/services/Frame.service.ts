@@ -16,4 +16,8 @@ export class FrameService{
     listFrames(){
         return this.http.get<any>(`${this.framesUrl}`);        
     }
+
+    findFrameById(idFrame: number){
+        return this.http.get<Frame>(`${this.framesUrl}/${idFrame}`);
+    }
 }

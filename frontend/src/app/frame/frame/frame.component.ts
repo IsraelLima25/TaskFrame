@@ -21,4 +21,8 @@ export class FrameComponent implements OnInit {
     this.router.navigate([`task/add/${idFrame}`]);
   }
 
+  detailFrame(idFrame: number){
+    this.router.navigate([`frame/detail/${idFrame}`]);
+  }
+
 }

@@ -18,7 +18,6 @@ export class ListFrameComponent implements OnInit {
     this.serviceFrame.listFrames().subscribe(
       response => {
         this.frames = response
-        console.log(this.frames)
       },
       err => {
         this.toastr.error('Erro', 'API não responde')

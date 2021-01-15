@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListTaskComponent } from './list-task/list-task.component';
 import { FormTaskComponent } from './form-task/form-task.component';
 import { TaskService } from '../services/Task.service';
+import { FrameService } from '../services/Frame.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { TaskService } from '../services/Task.service';
     ListTaskComponent,
   ],
   providers:  [
-    TaskService
+    TaskService, FrameService
   ]
 })
 export class TaskModule { }
