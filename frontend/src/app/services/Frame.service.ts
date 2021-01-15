@@ -10,6 +10,6 @@ export class FrameService{
     constructor(private http: HttpClient){}
 
     addFrame(frame: Frame){
-       return this.http.post(`${this.framesUrl}`,frame);        
+       return this.http.post<Frame>(`${this.framesUrl}`,frame);        
     }
 }

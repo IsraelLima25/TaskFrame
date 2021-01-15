@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
 import { FrameService } from 'src/app/services/Frame.service';
 import { Frame } from 'src/models/Frame.model';
 
@@ -12,7 +14,8 @@ export class FormFrameComponent implements OnInit {
 
   frameForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private frameService: FrameService) { }
+  constructor(private formBuilder: FormBuilder, private frameService: FrameService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.frameForm = this.formBuilder.group({
@@ -26,11 +29,9 @@ export class FormFrameComponent implements OnInit {
     frame.description = this.frameForm.get('description').value;
     frame.project = this.frameForm.get('project').value;
 
-    this.frameService.addFrame(frame).subscribe(
-      frame => console.log(frame),
-      err => console.log(err)
-    )
-     
+     this.frameService.addFrame(frame).subscribe(
+        frame => this.toastr.success(`Quadro adicionado Nª:${frame.id}`,'Sucesso'),
+        err => this.toastr.error('Erro','API não responde'))     
   }
 
 }

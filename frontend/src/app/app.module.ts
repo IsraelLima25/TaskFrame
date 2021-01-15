@@ -10,6 +10,7 @@ import { FrameModule } from './frame/frame.module';
 import { TaskModule } from './task/task.module';
 import { AppRoutingModule } from './app.routing.module';
 import { ErrorsModule } from './errors/errors.module';
+import { ToastNoAnimationModule  } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import { ErrorsModule } from './errors/errors.module';
     TaskModule,
     AppRoutingModule,
     ErrorsModule,
-    HttpClientModule        
+    HttpClientModule,
+    ToastNoAnimationModule .forRoot(
+      {
+        positionClass: 'toast-bottom-right'                
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
