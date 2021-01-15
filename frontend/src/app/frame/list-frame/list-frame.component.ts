@@ -23,6 +23,7 @@ export class ListFrameComponent implements OnInit {
         this.toastr.error('Erro', 'API não responde')
         console.log(err);
       }
-  )
+    )
   }
+
 }

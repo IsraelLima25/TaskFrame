@@ -16,10 +16,9 @@ import { Frame } from 'src/models/Frame.model';
 export class ListTaskComponent implements OnInit {
 
   public frame: Frame;
-  formFilter: FormGroup;
 
   constructor(private activatedRoute: ActivatedRoute, private frameService: FrameService,
-    private taskService: TaskService, private toastr: ToastrService, private formBuilder: FormBuilder) { }
+    private taskService: TaskService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.frameService.findFrameById(this.activatedRoute.snapshot.params['idFrame'])
@@ -29,11 +28,6 @@ export class ListTaskComponent implements OnInit {
           console.log(frame)
         }
       )
-
-      this.formFilter = this.formBuilder.group({
-        dateStart: ['',Validators.required],
-        dateFinish: ['',Validators.required]
-      });
   }
 
   alterState(idTask: number) {
@@ -64,22 +58,6 @@ export class ListTaskComponent implements OnInit {
     this.frame.tasks.forEach((item, index) => {
       if (item.id === idTask) this.frame.tasks.splice(index, 1);
     });
-  }
-
-  filter(){
-   let filterForm:FilterTaskDate = new FilterTaskDate();
-    filterForm.from = this.formFilter.get('dateStart').value;
-    filterForm.to = this.formFilter.get('dateFinish').value;
-
-    this.taskService.filterTask(filterForm).subscribe(
-      listTasksFilter => {
-        this.frame.tasks = listTasksFilter;
-      },
-      err => {
-        console.log(err),
-        this.toastr.error('API indisponível', 'Erro');
-      }
-    )
   }
 
 }

@@ -13,4 +13,5 @@ public interface TaskRespository extends JpaRepository<Task, Long> {
 	
 	List<Task> findByDeliveryDateBetween(LocalDate from, LocalDate to);
 	List<Task> findByDeliveryDate(LocalDate date);
+
 }
