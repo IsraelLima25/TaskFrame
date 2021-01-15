@@ -1,28 +1,25 @@
 <div class="container">
   <h3 class="title">
-    Lista de Tarefas
+    {{frame?.description}}
   </h3>
   <hr />
-  <p class="subtitle-text">Quadro de tarefas: {{frame?.description}}</p>
-
-
-  <!-- <h4 class="title">
-    Filtrar tarefas por mês
-  </h4> -->
-
-  <!-- class="form-inline"> -->
-  <!-- <div class="form-group">
-      <label class="lbl-filter" for="dateStart">Data Inicial</label>
-      <input class="form-control" id="dateStart" type="date" placeholder="Data Inicial" />
+  <form [formGroup]="formFilter" (submit)="filter()">
+    <div class="form-inline filter-block">
+      <div class="form-group">
+        <label class="lbl-filter" for="dateStart">Data Inicial</label>
+        <input formControlName="dateStart" class="form-control" id="dateStart" type="date" placeholder="Data Inicial" />
+      </div>
+      <div class="form-group mx-sm-3">
+        <label class="lbl-filter" for="dateFinal">Data Final</label>
+        <input formControlName="dateFinish" class="form-control" id="dateFinal" type="date" placeholder="Data Final" />
+      </div>
+      <div class="form-group">
+        <button [disabled]="formFilter.invalid" type="submit" class="btn btn-form">Filtrar</button>
+      </div>
     </div>
-    <div class="form-group mx-sm-3">
-      <label class="lbl-filter" for="dateFinal">Data Final</label>
-      <input class="form-control" id="dateFinal" type="date" placeholder="Data Final" />
-    </div>
-    <div class="form-group">
-      <a href="#" class="btn-form">Filtrar</a>
-    </div>   -->
-  <div *ngIf="frame?.tasks.length > 0; else elseBlock">
+  </form>
+
+  <div *ngIf="frame?.tasks.length > 0; else elseBlock" style="margin-bottom: 100px;">
     <table class="table table-responsive-lg table-striped mt-5">
       <thead>
         <tr>
@@ -39,7 +36,7 @@
               aria-label="Checkbox for following text input">
           </td>
           <td>
-            {{task.description}} 
+            {{task.description}}
           </td>
           <td class="text-center">
             {{task.deliveryDate | date: 'dd/MM/yy'}}
@@ -57,7 +54,7 @@
   </div>
 
   <ng-template #elseBlock>
-    <p class="subtitle-text text-center">Quadro vazio!!</p>
+    <p class="subtitle-text text-center mt-5">Nenhuma task encontrada</p>
   </ng-template>
 
 </div>

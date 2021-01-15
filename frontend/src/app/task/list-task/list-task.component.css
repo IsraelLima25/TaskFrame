@@ -34,3 +34,11 @@
 .delivered{
     text-decoration: line-through;
 }
+
+.title-list-task{
+    color: #3349FF;
+}
+
+.filter-block{
+    margin-top: 50px;
+}

@@ -36,8 +36,7 @@ export class FormFrameComponent implements OnInit {
   }
 
   clearForm(){
-    this.frameForm.get('description').setValue('');
-    this.frameForm.get('project').setValue('');
+    this.frameForm.reset();
   }
 
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { FilterTaskDate } from "src/models/FilterTaskDate.model";
 import { Task } from "src/models/Task.model";
 
 @Injectable()
@@ -19,6 +20,10 @@ export class TaskService{
 
     removeTask(idTask: number){
         return this.http.delete(`${this.tasksUrl}/${idTask}`);
+    }
+
+    filterTask(filter: FilterTaskDate){
+        return this.http.post<Task[]>(`${this.tasksUrl}/filterDate`, filter);
     }
 
 }
