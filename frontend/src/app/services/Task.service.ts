@@ -13,4 +13,12 @@ export class TaskService{
        return this.http.post<Task>(`${this.tasksUrl}/add/frame/${idFrame}`, task);        
     }
 
+    alterState(idTask: number){
+        return this.http.put(`${this.tasksUrl}/alter/task/${idTask}`,null);
+    }
+
+    removeTask(idTask: number){
+        return this.http.delete(`${this.tasksUrl}/${idTask}`);
+    }
+
 }

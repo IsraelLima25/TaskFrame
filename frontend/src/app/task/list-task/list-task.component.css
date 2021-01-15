@@ -10,3 +10,27 @@
     color: #7D7676;
     font-size: 16px;
 }
+
+.btn-remove{
+    background-color: #ce323a;
+    border-radius: 10px;
+    height: 35px;
+    width: 100px;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: -0.015em;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.msg-alert{
+    color: red;
+}
+
+.delivered{
+    text-decoration: line-through;
+}

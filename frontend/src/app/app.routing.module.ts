@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'frame/add', component: FormFrameComponent },
     { path: 'frame/list', component: ListFrameComponent },
     { path: 'task/add/:idFrame', component: FormTaskComponent },
-    { path: 'frame/detail/:idFrame', component: ListTaskComponent }   
+    { path: 'frame/detail/:idFrame', component: ListTaskComponent },   
     { path: '**', component: NotFoundComponent}
 ]
 
