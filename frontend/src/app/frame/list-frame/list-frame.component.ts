@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { FrameService } from 'src/app/services/Frame.service';
+import { Frame } from 'src/models/Frame.model';
 
 @Component({
   selector: 'app-list-frame',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListFrameComponent implements OnInit {
 
-  constructor() { }
+  frames: Frame [];
+
+  constructor(private serviceFrame: FrameService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.serviceFrame.listFrames().subscribe(
+      response => {
+        this.frames = response
+        console.log(this.frames)
+      },
+      err => {
+        this.toastr.error('Erro', 'API não responde')
+        console.log(err);
+      }
+  )
   }
-
 }

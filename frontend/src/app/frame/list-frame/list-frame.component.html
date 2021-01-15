@@ -3,7 +3,9 @@
     Lista de Quadros
   </h3>
   <hr />
-  <app-frame></app-frame>
- 
-  
-</div>
+  <div class="row margin-bottom">
+    <span *ngFor="let frame of frames">
+      <app-frame [frame]="frame"></app-frame>      
+    </span>    
+  </div>
+  </div>

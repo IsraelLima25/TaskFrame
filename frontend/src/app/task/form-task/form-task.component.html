@@ -1,27 +1,40 @@
 <div class="container">
   <h3 class="title">Adicionar Tarefa</h3>
-  <hr/>
+  <hr />
   <div class="row">
-      <div class="col-md-6">
-        
+    <div class="col-md-6">
+      <form [formGroup] = "taskForm" (submit)="addTask()">
         <div class="form-group">
           <label class="lbl" for="title">Título</label>
-          <input id="title" class="form-control" type="text"> 
+          <input id="title" formControlName="title" class="form-control" type="text">
+          <small class="text-danger d-block mt-2" 
+          *ngIf="taskForm.get('title').errors?.required" class="text-danger d-block mt-2">
+            Título obrigatório
+          </small> 
         </div>
-      
+
         <div class="form-group">
           <label class="lbl" for="description">Descrição</label>
-          <input id="description" class="form-control" type="text">
+          <input id="description" formControlName="description" class="form-control" type="text">
+          <small class="text-danger d-block mt-2" 
+          *ngIf="taskForm.get('description').errors?.required" class="text-danger d-block mt-2">
+            Descrição obrigatória
+          </small> 
         </div>
 
         <div class="form-group">
           <label class="lbl" for="deliveryDate">Data Entrega</label>
-          <input id="deliveryDate" class="form-control" type="date">
+          <input id="deliveryDate" formControlName="deliveryDate" class="form-control" type="date">
+          <small class="text-danger d-block mt-2" 
+          *ngIf="taskForm.get('deliveryDate').errors?.required" class="text-danger d-block mt-2">
+            Descrição obrigatória
+          </small> 
         </div>
-      
+
         <div class="form-group">
-          <a href="#" class="btn-form">Adicionar</a>
+          <button type="submit" [disabled]="taskForm.invalid" class="btn btn-form">Adicionar</button>
         </div>
-      </div>
-  </div>  
+      </form>
+    </div>
+  </div>
 </div>

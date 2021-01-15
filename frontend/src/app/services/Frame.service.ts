@@ -12,4 +12,8 @@ export class FrameService{
     addFrame(frame: Frame){
        return this.http.post<Frame>(`${this.framesUrl}`,frame);        
     }
+
+    listFrames(){
+        return this.http.get<any>(`${this.framesUrl}`);        
+    }
 }

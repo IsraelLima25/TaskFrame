@@ -74,5 +74,9 @@ public class FrameDTO implements Serializable {
 	public List<TaskDTO> getTasks() {
 		return tasks;
 	}
+	
+	public int getTotalTasks() {
+		return this.tasks.size();
+	}
 
 }

@@ -30,8 +30,14 @@ export class FormFrameComponent implements OnInit {
     frame.project = this.frameForm.get('project').value;
 
      this.frameService.addFrame(frame).subscribe(
-        frame => this.toastr.success(`Quadro adicionado Nª:${frame.id}`,'Sucesso'),
+        frame => {this.toastr.success(`Quadro adicionado Nª:${frame.id}`,'Sucesso'),
+        this.clearForm()},        
         err => this.toastr.error('Erro','API não responde'))     
+  }
+
+  clearForm(){
+    this.frameForm.get('description').setValue('');
+    this.frameForm.get('project').setValue('');
   }
 
 }
