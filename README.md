@@ -44,6 +44,9 @@ cd backend
 
 # executar o projeto
 ./mvnw spring-boot:run
+
+# acessar
+http://localhost:{port:default->8080}/swagger-ui.html
 ```
 
 ## Front end web
