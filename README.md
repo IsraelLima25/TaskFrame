@@ -5,7 +5,7 @@
 
 # Sobre o projeto
 
-Organizador de tarefas
+Aplicação web para organizar tarefas diárias.
 
 ## Diagrama de Classes
 ![Diagrama Classe](https://github.com/IsraelLima25/Assets/blob/main/Diagrama%20de%20Classe%20TASKFRAME.png)
@@ -19,10 +19,14 @@ Organizador de tarefas
 - Java 11
 - Spring Boot
 - Spring Data JPA
-- Spring Security
 - Swagger
 - JPA / Hibernate
 - Maven
+
+## Front end
+- HTML / CSS / JS / TypeScript
+- Angular 6
+- Bootstrap
 
 # Como executar o projeto
 
