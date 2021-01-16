@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { FrameService } from 'src/app/services/Frame.service';
 import { TaskService } from 'src/app/services/Task.service';
-import { FilterTaskDate } from 'src/models/FilterTaskDate.model';
 
 import { Frame } from 'src/models/Frame.model';
 
