@@ -22,6 +22,8 @@ Aplicação web para organizar tarefas diárias.
 - Swagger
 - JPA / Hibernate
 - Maven
+- JUnit / Mockito
+- Docker
 
 ## Front end
 - HTML / CSS / JS / TypeScript
