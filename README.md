@@ -25,6 +25,9 @@ Aplicação web para organizar tarefas diárias.
 - JUnit / Mockito
 - Docker
 
+## Banco de Dados
+- MySQl
+
 ## Front end
 - HTML / CSS / JS / TypeScript
 - Angular 6
